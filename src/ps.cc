@@ -9,7 +9,7 @@
  */
 
 ostream&
-PS::init (ostream& out, const char* mediaType, int orientation, double un)
+PS::init (ostream& out, char const* mediaType, int orientation, double un)
 {
   return out << "%!" << endl
 	     << "<< /MediaType {" << mediaType

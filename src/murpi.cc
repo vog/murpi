@@ -92,7 +92,7 @@ string
 murpi2sign (char const* murpi)
 {
   string s (murpi);
-  int l = strlen (murpi);
+  int const l = strlen (murpi);
   s[0] = '+';
   for (;;)
     {

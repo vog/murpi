@@ -25,7 +25,7 @@ public:
 
   // initialization
   static ostream&
-  init (ostream& out, const char* mediaType = "letter", int orientation = 0,
+  init (ostream& out, char const* mediaType = "letter", int orientation = 0,
 	double un = 72);
 
   // sets length unit

@@ -11,7 +11,7 @@
 points
 Bezier2P::calc (points const& path, int steps)
 {
-  const uint size = path.size ();
+  uint const size = path.size ();
   points bezier;
 
   // special case
