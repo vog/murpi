@@ -9,8 +9,7 @@ ZIP	= zip -r9
 NSIS	= makensis-bz2
 
 bindist:
-	./configure --prefix=$(bin_PREFIX)
-	make
+	make clean all prefix=$(bin_PREFIX)
 	$(SU) "\
 		$(EPM) portable $(PACKAGE) ;\
 		$(EPM) rpm $(PACKAGE) ;\
