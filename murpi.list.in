@@ -1,0 +1,32 @@
+# Directories
+$prefix=@prefix@
+$exec_prefix=@exec_prefix@
+$bindir=@bindir@
+$datadir=@datadir@
+$docdir=@datadir@/doc/@PACKAGE@
+$libdir=@libdir@
+$mandir=@mandir@
+$srcdir=@srcdir@
+
+# Product information
+%product Murpi
+%copyright @COPYRIGHT@
+%vendor Volker Grabsch <vog@uni.de>
+%license ${srcdir}/COPYING
+%readme ${srcdir}/README
+%description This is a test suite for murphistic images ("murpi").
+%version @VERSION@
+
+# Manpage extensions...
+$CAT1EXT=@CAT1EXT@
+$MAN1EXT=@MAN1EXT@
+$CAT5EXT=@CAT5EXT@
+$MAN5EXT=@MAN5EXT@
+
+# Executables
+%system all
+f 0755 root sys ${bindir}/murpi ${srcdir}/src/murpi
+f 0644 root sys ${docdir}/README ${srcdir}/README
+f 0644 root sys ${docdir}/COPYING ${srcdir}/COPYING
+f 0644 root sys ${docdir}/ChangeLog ${srcdir}/ChangeLog
+f 0644 root sys ${docdir}/NEWS ${srcdir}/NEWS
