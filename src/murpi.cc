@@ -91,7 +91,7 @@ create_murpi (char start, char end)
 string
 murpi2sign (char const* murpi)
 {
-  string s (murpi);
+  string s = murpi;
   int const l = strlen (murpi);
   s[0] = '+';
   for (;;)
@@ -105,7 +105,7 @@ murpi2sign (char const* murpi)
       // sign all nails of this kind
       char c='+';
       for (; i<l; i++)
-	if (murpi[i]==n)
+	if (murpi[i] == n)
 	  s[i] = (c = '+'+'-'-c);
     }
 }
@@ -146,12 +146,12 @@ murpi2way (string const& murpi, string const& sign)
  */
 
 points
-create_nails (int num)
+create_nails (int num, double dist)
 {
   points p;
   for (int i = 0; i < num; i++)
     {
-      p << point (30*i, 0);
+      p << point (dist*i, 0);
     }
   return p;
 }
@@ -200,7 +200,7 @@ way2path (string const& way, points const& nails)
   int y = +1;      // y direction
 
   m[n].y(y)++;
-  p << point (nails[n].x - 20, -50);
+  p << point (nails[n].x - 20, -80);
   p << point (nails[n].x, nails[n].y + y*m[n].y(y));
   for (uint i = 0; i < way.length(); i++)
     {
@@ -233,7 +233,7 @@ way2path (string const& way, points const& nails)
 	  break;
 	}
     }
-  p << point (nails[n].x + 20, -50);
+  p << point (nails[n].x + 20, -80);
 
   return p;
 }

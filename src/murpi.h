@@ -62,7 +62,7 @@ murpi2way (string const& murpi, string const& sign);
  */
 
 points
-create_nails (int num);
+create_nails (int num, double dist);
 
 
 /*
