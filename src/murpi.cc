@@ -239,7 +239,8 @@ way2points (const string way, const points nails)
 	  y = -y;
 	  m[n].x(x)++;
 	  m[n].y(y)++;
-	  p.add (nails[n].x + x*m[n].x(x), (m[n].y(+1) - m[n].y(-1)) / 2);
+	  p.add (nails[n].x + x*m[n].x(x),
+		 nails[n].y + (m[n].y(+1) - m[n].y(-1)) / 2);
 	  p.add (nails[n].x, nails[n].y + y*m[n].y(y));
 
 	case '|':
@@ -261,20 +262,50 @@ void
 line2bezier (const point p0, const point p1, const point p2, const point p3,
 	     points &bezier, int depth)
 {
-  double ax = -1 * p0.x +1 * p1.x -1 * p2.x +1 * p3.x;
-  double bx = +2 * p0.x -2 * p1.x +1 * p2.x -1 * p3.x;
-  double cx = -1 * p0.x           +1 * p2.x;
-  double dx =           +1 * p1.x;
+  // general substitutions
+  double x0 = p1.x;
+  double x1 = p2.x;
+  double dx0 = p2.x - p0.x;
+  double dx1 = p3.x - p1.x;
 
-  double ay = -1 * p0.y +1 * p1.y -1 * p2.y +1 * p3.y;
-  double by = +2 * p0.y -2 * p1.y +1 * p2.y -1 * p3.y;
-  double cy = -1 * p0.y           +1 * p2.y;
-  double dy =           +1 * p1.y;
+  double y0 = p1.y;
+  double y1 = p2.y;
+  double dy0 = p2.y - p0.y;
+  double dy1 = p3.y - p1.y;
 
-  for (double i = 0, d = 1.0/depth; i <= 1; i += d)
+  // calculate norming values
+  double d = sqrt ((p1.x-p2.x)*(p1.x-p2.x) + (p1.x-p2.x)*(p1.x-p2.x));
+  double d0 = sqrt (dx0*dx0 + dy0*dy0);
+  double d1 = sqrt (dx1*dx1 + dy1*dy1);
+
+  // norm
+  if (d0 != 0)
     {
-      bezier.add ((((ax * i + bx) * i) + cx) * i + dx,
-		  (((ay * i + by) * i) + cy) * i + dy);
+      dx0 = dx0 * d / d0;
+      dy0 = dy0 * d / d0;
+    }
+  if (d1 != 0)
+    {
+      dx1 = dx1 * d / d1;
+      dy1 = dy1 * d / d1;
+    }
+
+  // calculate function parameters
+  double ax = +2 * x0 +1 * dx0 -2 * x1 +1 * dx1;
+  double bx = -3 * x0 -2 * dx0 +3 * x1 -1 * dx1;
+  double cx =         +1 * dx0;
+  double dx = +1 * x0;
+
+  double ay = +2 * y0 +1 * dy0 -2 * y1 +1 * dy1;
+  double by = -3 * y0 -2 * dy0 +3 * y1 -1 * dy1;
+  double cy =         +1 * dy0;
+  double dy = +1 * y0;
+
+  // calculate points
+  for (double i = 0, d = 1.0/depth; i < 1.0; i += d)
+    {
+      bezier.add (((ax * i + bx) * i + cx) * i + dx,
+		  ((ay * i + by) * i + cy) * i + dy);
     }
 }
 

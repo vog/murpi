@@ -1,3 +1,7 @@
+2002-05-04  Volker Grabsch  <vog@uni.de>
+
+	* src/murpi.cc (line2bezier): improved bezier calculation
+
 2002-05-03  Volker Grabsch  <vog@uni.de>
 
 	* src/point.cc: moved class point from murpi.cc to point.cc
