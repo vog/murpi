@@ -135,32 +135,6 @@ sign_murphy (const char *seq)
  */
 
 string
-_murpi2way (const string seq, const string sgn)
-{
-  string s;
-
-  for (uint i = 1; i < seq.length (); i++)
-    {
-      int d = seq[i] - seq[i-1];
-      if (d < 0)
-	{
-	  if (sgn[i-1] == '+') s += 'O';
-	  for (int j = 1; j < -d; j++) s += '_';
-	  s += (sgn[i] == '+') ? "_O" : "-";
-	}
-      else
-	{
-	  if (sgn[i-1] == '-') s += 'O';
-	  for (int j = 1; j < d; j++) s += '_';
-	  s += (sgn[i] == '-') ? "_O" : "-";
-	}
-    }
-
-  return s;
-}
-
-
-string
 murpi2way (const string seq, const string sgn)
 {
   string s;
