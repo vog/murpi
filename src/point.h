@@ -60,7 +60,7 @@ class points : public vector<point>
 public:
 
   points&
-  add (double x, double y);
+  operator << (const point& p);
 
 };
 

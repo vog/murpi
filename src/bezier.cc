@@ -98,8 +98,8 @@ CubicBezier::calc2P (const point& p0, const point& p1,
   // calculate points
   for (double i = 0, j = 1.0/steps; i < 1.0; i += j)
     {
-      bezier.add (((A * i + B) * i + C) * i + D,
-		  ((a * i + b) * i + c) * i + d);
+      bezier << point (((A * i + B) * i + C) * i + D,
+		       ((a * i + b) * i + c) * i + d);
     }
 }
 

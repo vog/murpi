@@ -85,8 +85,8 @@ operator / (const point& a, double d)
 
 
 points&
-points::add (double x, double y)
+points::operator << (const point& p)
 {
-  insert (end (), point (x, y));
+  insert (end (), p);
   return *this;
 }
