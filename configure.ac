@@ -3,7 +3,7 @@ AC_INIT
 AM_INIT_AUTOMAKE(murpi, $(date +%Y-%m-%d))
 AC_CONFIG_SRCDIR([src/main.cc])
 AM_CONFIG_HEADER(config.h)
-CFLAGS="-Wall -g -O3"
+CXXFLAGS="-Wall -g -O3"
 
 # Extra variables.
 COPYRIGHT="2002  Volker Grabsch <vog@uni.de>"
