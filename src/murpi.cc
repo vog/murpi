@@ -213,7 +213,7 @@ way2points (const string way, const points nails)
   int x = +1;      // x direction
   int y = +1;      // y direction
 
-  m[n].x(x)++;
+  m[n].y(y)++;
   p.add (nails[n].x, nails[n].y + y*m[n].y(y));
   for (uint i = 0; i < way.length(); i++)
     {
