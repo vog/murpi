@@ -61,6 +61,26 @@ QuadraticBezier::calc2P (const point& p0, const point& p1,
 			 const point& d0, const point& d1,
 			 points& bezier, int steps)
 {
+  // calculate the common factor
+  double f = (d1.x * d0.y - d0.x * d1.y);
+  if (f == 0) return;
+  f = 2 * (d1.x * (p1.y-p0.y) - d1.y * (p1.x-p0.x)) / f;
+
+  // calculate function parameters
+  double B = f * d0.x;
+  double A = p1.x - p0.x - B;
+  double C = p0.x;
+
+  double b = f * d0.y;
+  double a = p1.y - p0.y - b;
+  double c = p0.y;
+
+  // calculate points
+  for (double i = 0, j = 1.0/steps; i < 1.0; i += j)
+    {
+      bezier << point ((A * i + B) * i + C,
+		       (a * i + b) * i + c);
+    }
 }
 
 
