@@ -1,6 +1,7 @@
 #include <config.h>
 #include <fstream>
 #include "murpi.h"
+#include "ps.h"
 
 
 /*
@@ -28,6 +29,7 @@ main (int argc, char *argv[])
   cout << endl << way << endl;
 
   ofstream f ("test.ps");
+  f << PS::init;
   points2ps (f, nails, path);
   points2ps (f, nails, bezier);
   f.close ();

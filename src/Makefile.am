@@ -2,4 +2,6 @@ bin_PROGRAMS = murpi
 murpi_SOURCES =		\
 	main.cc		\
 	murpi.h		\
-	murpi.cc
+	murpi.cc	\
+	ps.h		\
+	ps.cc
