@@ -46,7 +46,7 @@ create_murpi (char start, char end);
  */
 
 string
-murpi2sign (char const* murpi);
+murpi2sign (string const& murpi);
 
 
 /*

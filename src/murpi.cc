@@ -89,10 +89,10 @@ create_murpi (char start, char end)
  */
 
 string
-murpi2sign (char const* murpi)
+murpi2sign (string const& murpi)
 {
   string s = murpi;
-  int const l = strlen (murpi);
+  int const l = murpi.length ();
   s[0] = '+';
   for (;;)
     {
