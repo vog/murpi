@@ -31,14 +31,17 @@ main (int argc, char* argv[])
   ofstream f ("test.ps");
   PS::init (f);
   PS::unit (f, 3.6);
+
   PS::lineWidth (f, 0);
   PS::rect (f, 30, 100, 0.2, nails);
   PS::curve (f, 30, 100, false, false, path);
   PS::showpage (f);
+
   PS::lineWidth (f, 0);
   PS::rect (f, 30, 100, 0.2, nails);
   PS::curve (f, 30, 100, false, false, bezier);
   PS::showpage (f);
+
   f.close ();
   system ("gv test.ps");
 
