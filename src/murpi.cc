@@ -28,26 +28,6 @@ test_whoops (const char *seq)
  */
 
 bool
-_test_crash (const char *seq, char ign)
-{
-  stack<char> s;
-
-  for (; *seq; seq++)
-    {
-      if (*seq != ign)
-	{
-	  if (s.empty () || s.top () != *seq)
-	    s.push (*seq);
-	  else
-	    s.pop ();
-	}
-    }
-
-  return s.empty ();
-}
-
-
-bool
 test_crash (const char* seq, char ign)
 {
   char s[strlen (seq)];
@@ -85,7 +65,7 @@ test_murphy (const char* seq, char start, char end)
 
 
 /*
- * create a murphistic sequence.
+ * creates a murphistic sequence.
  */
 
 string
@@ -105,7 +85,7 @@ create_murphy (char start, char end)
 
 
 /*
- * create the +/- of a murphistic sequence.
+ * creates the +/- of a murphistic sequence.
  */
 
 string
@@ -162,7 +142,7 @@ murpi2way (const string seq, const string sgn)
 
 
 /*
- * create num nails
+ * creates num nails
  */
 
 points
@@ -178,7 +158,7 @@ create_nails (int num)
 
 
 /*
- * way -> points
+ * help class for way2points()
  */
 
 class way_params
@@ -204,6 +184,11 @@ public:
     return dy > 0 ? up : down;
   }
 };
+
+
+/*
+ * way -> points
+ */
 
 points
 way2points (const string way, const points nails)

@@ -34,7 +34,7 @@ test_murphy (const char* seq, char start, char end);
 
 
 /*
- * create a murphistic sequence.
+ * creates a murphistic sequence.
  */
 
 string
@@ -42,7 +42,7 @@ create_murphy (char start, char end);
 
 
 /*
- * create the +/- of a murphistic sequence.
+ * creates the +/- of a murphistic sequence.
  */
 
 string
@@ -58,7 +58,7 @@ murpi2way (const string seq, const string sgn);
 
 
 /*
- * create num nails
+ * creates num nails
  */
 
 points
@@ -82,18 +82,11 @@ path2bezier (const points path, int depth);
 
 
 /*
- * points -> PostScript
- */
-
-void
-points2ps (ostream &o, const points nails, const points path);
-
-
-/*
  * searches all murphy sequences of a given length in the given range
  */
 
 void
 search_murphy (int length, char start, char end);
+
 
 #endif

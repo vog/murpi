@@ -1,6 +1,7 @@
 #include <config.h>
 #include <fstream>
 #include "murpi.h"
+#include "point.h"
 #include "ps.h"
 
 

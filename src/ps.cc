@@ -20,7 +20,7 @@ PS::init (ostream& out, const char* mediaType, int orientation, double un)
 
 
 /*
- * set length unit
+ * sets length unit
  */
 
 ostream&
@@ -31,7 +31,7 @@ PS::unit (ostream& out, double un)
 
 
 /*
- * set line width
+ * sets line width
  */
 
 ostream&
@@ -42,7 +42,7 @@ PS::lineWidth (ostream& out, double width)
 
 
 /*
- * show current page
+ * shows current page
  */
 
 ostream&
@@ -53,7 +53,7 @@ PS::showpage (ostream& out)
 
 
 /*
- * save current state
+ * saves current state
  */
 
 ostream&
@@ -64,7 +64,7 @@ PS::gsave (ostream& out)
 
 
 /*
- * restore saved state
+ * restores saved state
  */
 
 ostream&
