@@ -1,4 +1,5 @@
 SUBDIRS = src
+AUTOMAKE_OPTIONS = dist-bzip2
 
 bin_PREFIX = /usr
 
