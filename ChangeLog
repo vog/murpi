@@ -1,3 +1,7 @@
+2002-05-02  Volker Grabsch  <vog@uni.de>
+
+	* src/murpi.cc (path2bezier): implemented bezier curves
+
 2002-05-01  Volker Grabsch  <vog@uni.de>
 
 	* configure.ac: improved "unstable" version number

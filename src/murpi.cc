@@ -214,6 +214,7 @@ way2points (const string way, const points nails)
   int y = +1;      // y direction
 
   m[n].y(y)++;
+  p.add (nails[n].x - 20, -100);
   p.add (nails[n].x, nails[n].y + y*m[n].y(y));
   for (uint i = 0; i < way.length(); i++)
     {
@@ -245,6 +246,56 @@ way2points (const string way, const points nails)
 	  break;
 	}
     }
+  p.add (nails[n].x + 20, -100);
+
+  return p;
+}
+
+
+/*
+ * path -> bezier
+ */
+
+void
+line2bezier (const point p0, const point p1, const point p2, const point p3,
+	     points &bezier, int depth)
+{
+  double ax = -1 * p0.x +1 * p1.x -1 * p2.x +1 * p3.x;
+  double bx = +2 * p0.x -2 * p1.x +1 * p2.x -1 * p3.x;
+  double cx = -1 * p0.x           +1 * p2.x;
+  double dx =           +1 * p1.x;
+
+  double ay = -1 * p0.y +1 * p1.y -1 * p2.y +1 * p3.y;
+  double by = +2 * p0.y -2 * p1.y +1 * p2.y -1 * p3.y;
+  double cy = -1 * p0.y           +1 * p2.y;
+  double dy =           +1 * p1.y;
+
+  for (double i = 0, d = 1.0/depth; i <= 1; i += d)
+    {
+      bezier.add ((((ax * i + bx) * i) + cx) * i + dx,
+		  (((ay * i + by) * i) + cy) * i + dy);
+    }
+}
+
+
+/*
+ * points -> bezier
+ */
+
+points
+path2bezier (points path, int depth)
+{
+  points p;
+
+  path.insert (path.begin(), path[0]);
+  path.insert (path.begin(), path[0]);
+  path.insert (path.end(), path[path.size () - 1]);
+  path.insert (path.end(), path[path.size () - 1]);
+
+  for (uint i = 0, s = path.size (); i + 3 < s; i++)
+    {
+      line2bezier (path[i], path[i+1], path[i+2], path[i+3], p, depth);
+    }
 
   return p;
 }
@@ -265,12 +316,11 @@ points2ps (ostream &o, const points nails, const points path)
   o << "0 setlinewidth" << endl;
 
   o << "newpath" << endl;
-  o << "0 un 0 un moveto" << endl;
   for (uint i = 0; i < path.size(); i++)
     {
-      o << x+path[i].x << " un " << y+path[i].y << " un lineto" << endl;
+      o << x+path[i].x << " un " << y+path[i].y << " un "
+	<< (i == 0 ? "moveto" : "lineto") << endl;
     }
-  o << "160 un 0 un lineto" << endl;
   o << "stroke" << endl;
 
   for (uint i = 0; i < nails.size(); i++)
