@@ -14,41 +14,39 @@ Bezier2P::calc (const points& path, int steps)
   const uint size = path.size ();
   points bezier;
 
-  // invalid case
-  if (size < 2)
-    {
-      return bezier;
-    }
-
   // special case
   if (size == 2)
     {
       calc2P (path[0], path[1],
 	      path[1] - path[0], path[1] - path[0],
 	      bezier, steps);
-      return bezier;
     }
 
-  // start
-  calc2P (path[0], path[1],
-	  path[1] - path[0], path[2] - path[0],
-	  bezier, steps);
-
-  // between
-  for (uint i = 0; i + 3 < size; i++)
+  // normal case
+  else if (size > 2)
     {
-      calc2P (path[i+1], path[i+2],
-	      path[i+2] - path[i], path[i+3] - path[i+1],
+      // start
+      calc2P (path[0], path[1],
+	      path[1] - path[0], path[2] - path[0],
+	      bezier, steps);
+
+      // between
+      for (uint i = 0; i + 3 < size; i++)
+	{
+	  calc2P (path[i+1], path[i+2],
+		  path[i+2] - path[i], path[i+3] - path[i+1],
+		  bezier, steps);
+	}
+
+      // start
+      calc2P (path[size-2], path[size-1],
+	      path[size-1] - path[size-3], path[size-1] - path[size-2],
 	      bezier, steps);
     }
 
-  // start
-  calc2P (path[size-2], path[size-1],
-	  path[size-1] - path[size-3], path[size-1] - path[size-2],
-	  bezier, steps);
-
   // add "forgotten" last point
-  bezier << path[size-1];
+  if (size > 0)
+    bezier << path[size-1];
 
   return bezier;
 }
