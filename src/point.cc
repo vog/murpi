@@ -47,6 +47,43 @@ operator - (const point& a, const point& b)
 }
 
 
+point&
+point::operator *= (double d)
+{
+  x *= d;
+  y *= d;
+  return *this;
+}
+
+
+point
+operator * (const point& a, double d)
+{
+  return point (a) *= d;
+}
+
+
+point
+operator * (double d, const point& a)
+{
+  return a * d;
+}
+
+
+point&
+point::operator /= (double d)
+{
+  return *this *= 1/d;
+}
+
+
+point
+operator / (const point& a, double d)
+{
+  return point (a) /= d;
+}
+
+
 points&
 points::add (double x, double y)
 {

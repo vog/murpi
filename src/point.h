@@ -33,6 +33,21 @@ public:
   friend point
   operator - (const point& a, const point& b);
 
+  point&
+  operator *= (double d);
+
+  friend point
+  operator * (const point& a, double d);
+
+  friend point
+  operator * (double d, const point& a);
+
+  point&
+  operator /= (double d);
+
+  friend point
+  operator / (const point& a, double d);
+
 };
 
 
