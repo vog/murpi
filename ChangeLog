@@ -1,5 +1,7 @@
 2002-05-04  Volker Grabsch  <vog@uni.de>
 
+	* Release - 0.2
+
 	* src/main.cc (main): more output
 
 	* src/ps.h (class PS): many improvements
