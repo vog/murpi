@@ -45,6 +45,27 @@ main (int argc, char* argv[])
   PS::curve (f, 70, -100, false, false, bezier);
   PS::showpage (f);
 
+  nails = create_nails (4, 30);
+  murpi = create_murpi ('A', 'D');
+  sign = murpi2sign (murpi.data ());
+  way = murpi2way (murpi, sign);
+  path = way2path (way, nails);
+  bezier = SimpleNormedCubicBezier().calc (path, 100);
+
+  PS::unit (f, 6);
+  PS::landscape (f);
+  PS::lineWidth (f, 0);
+  PS::rect (f, 20, -40, 0.2, nails);
+  PS::curve (f, 20, -40, false, false, path);
+  PS::showpage (f);
+
+  PS::unit (f, 6);
+  PS::landscape (f);
+  PS::lineWidth (f, 0);
+  PS::rect (f, 20, -40, 0.2, nails);
+  PS::curve (f, 20, -40, false, false, bezier);
+  PS::showpage (f);
+
   f.close ();
   system ("gv murpi.ps");
 
