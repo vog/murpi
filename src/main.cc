@@ -1,9 +1,43 @@
 #include <config.h>
+#include <unistd.h>
+#include <string>
 #include <fstream>
 #include "murpi.h"
 #include "point.h"
 #include "bezier.h"
 #include "ps.h"
+
+
+/*
+ * about
+ */
+
+void
+about ()
+{
+  cout << endl
+       << "   Murpi - Murphistic Images" << endl
+       << "   =========================" << endl
+       << endl
+       << "   Version " VERSION << endl
+       << endl
+       << "   (C) " COPYRIGHT << endl
+       << endl
+       << "   This program is free software; you can redistribute it and/or modify" << endl
+       << "   it under the terms of the GNU General Public License as published by" << endl
+       << "   the Free Software Foundation; either version 2 of the License, or" << endl
+       << "   (at your option) any later version." << endl
+       << endl
+       << "   This program is distributed in the hope that it will be useful," << endl
+       << "   but WITHOUT ANY WARRANTY; without even the implied warranty of" << endl
+       << "   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the" << endl
+       << "   GNU General Public License for more details." << endl
+       << endl
+       << "   You should have received a copy of the GNU General Public License" << endl
+       << "   along with this program; if not, write to the Free Software" << endl
+       << "   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA" << endl
+       << endl;
+}
 
 
 /*
@@ -13,12 +47,19 @@
 int
 main (int argc, char* argv[])
 {
-  int const num = 18;
+  about ();
+
+  cout << "calculating ." << flush;
+  int const num = 22;
   string c = create_murpi ('A', 'A'+num-1);
-  cout << "(" << num << "-" << c.length () << ") " << c << " <"
-       << (test_murpi (c.data (), 'A', 'A'+num-1) ? "yeah" : "D'OH!")
-       << ">" << endl;
-  cout << "(" << num << "-" << c.length () << ") " << murpi2sign (c) << endl;
+  cout << "." << flush;
+  ofstream out ("murpi.txt");
+  out << "(" << num << "-" << c.length () << ") " << c << " <"
+      << (test_murpi (c.data (), 'A', 'A'+num-1) ? "yeah" : "D'OH!")
+      << ">" << endl;
+  cout << "." << flush;
+  out << "(" << num << "-" << c.length () << ") " << murpi2sign (c) << endl;
+  cout << ". ready  (output to murpi.txt)" << endl << endl;
 
   points nails = create_nails (7, 40);
   string murpi = argc <= 1 ? create_murpi ('A', 'G') : argv[1];
@@ -36,8 +77,8 @@ main (int argc, char* argv[])
   PS::landscape (f);
   PS::lineWidth (f, 0);
   PS::setfont (f, "Courier", 7);
-  PS::show (f, 10, -20, murpi.data ());
-  PS::show (f, 10, -18, sign.data ());
+  PS::show (f, 10, -18, sign);
+  PS::show (f, 10, -20, murpi);
   PS::rect (f, 70, -100, 0.2, nails);
   PS::curve (f, 70, -100, false, false, path);
   PS::showpage (f);
@@ -45,8 +86,8 @@ main (int argc, char* argv[])
   PS::landscape (f);
   PS::lineWidth (f, 0);
   PS::setfont (f, "Courier", 7);
-  PS::show (f, 10, -20, murpi.data ());
-  PS::show (f, 10, -18, sign.data ());
+  PS::show (f, 10, -18, sign);
+  PS::show (f, 10, -20, murpi);
   PS::rect (f, 70, -100, 0.2, nails);
   PS::curve (f, 70, -100, false, false, bezier);
   PS::showpage (f);
@@ -62,8 +103,8 @@ main (int argc, char* argv[])
   PS::landscape (f);
   PS::lineWidth (f, 0);
   PS::setfont (f, "Courier", 32);
-  PS::show (f, 10, -12, murpi);
-  PS::show (f, 10, -16, sign);
+  PS::show (f, 10, -6, sign);
+  PS::show (f, 10, -10, murpi);
   PS::show (f, 10, -20, way);
   PS::rect (f, 20, -40, 0.2, nails);
   PS::curve (f, 20, -40, false, false, path);
@@ -73,15 +114,16 @@ main (int argc, char* argv[])
   PS::landscape (f);
   PS::lineWidth (f, 0);
   PS::setfont (f, "Courier", 32);
-  PS::show (f, 10, -12, murpi);
-  PS::show (f, 10, -16, sign);
+  PS::show (f, 10, -6, sign);
+  PS::show (f, 10, -10, murpi);
   PS::show (f, 10, -20, way);
   PS::rect (f, 20, -40, 0.2, nails);
   PS::curve (f, 20, -40, false, false, bezier);
   PS::showpage (f);
 
   f.close ();
-  system ("gv murpi.ps");
+
+  cout << endl << "... ready  (output to murpi.ps)" << endl << endl;
 
   return 0;
 }
