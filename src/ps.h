@@ -3,6 +3,7 @@
 
 
 #include <config.h>
+#include <string>
 #include <iostream>
 #include "point.h"
 
@@ -40,6 +41,10 @@ public:
   static ostream&
   lineWidth (ostream& out, double width = 1);
 
+  // sets font
+  static ostream&
+  PS::setfont (ostream& out, char const* font, int size);
+
   // shows current page
   static ostream&
   showpage (ostream& out);
@@ -53,8 +58,12 @@ public:
   grestore (ostream& out);
 
   // draws text
-  ostream&
+  static ostream&
   PS::show (ostream& out, double x, double y, char const* text);
+
+  // draws text
+  static ostream&
+  PS::show (ostream& out, double x, double y, string const& text);
 
   // draws some rectangles
   static ostream&

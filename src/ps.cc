@@ -1,4 +1,5 @@
 #include <config.h>
+#include <string>
 #include <iostream>
 #include "point.h"
 #include "ps.h"
@@ -15,7 +16,10 @@ PS::init (ostream& out, char const* mediaType, int orientation, double un)
 	     << "<< /MediaType {" << mediaType
 	     << "} /Orientation " << orientation
 	     << " >> setpagedevice" << endl
-	     << "/un {" << un << " mul} def" << endl;
+	     << "/un {" << un << " mul} def" << endl
+	     << "/Times-Roman findfont" << endl
+	     << "12 scalefont" << endl
+	     << "setfont" << endl;
 }
 
 
@@ -49,6 +53,19 @@ ostream&
 PS::lineWidth (ostream& out, double width)
 {
   return out << width << " setlinewidth" << endl;
+}
+
+
+/*
+ * sets font
+ */
+
+ostream&
+PS::setfont (ostream& out, char const* font, int size)
+{
+  return out << "/" << font << " findfont" << endl
+	     << size << " scalefont" << endl
+	     << "setfont" << endl;
 }
 
 
@@ -94,7 +111,20 @@ PS::show (ostream& out, double x, double y, char const* text)
 {
   return out << "newpath" << endl
 	     << x << " un " << y << " un moveto" << endl
-	     << "{" << text << "}" << endl;
+	     << "(" << text << ") show" << endl;
+}
+
+
+/*
+ * draws text
+ */
+
+ostream&
+PS::show (ostream& out, double x, double y, string const& text)
+{
+  return out << "newpath" << endl
+	     << x << " un " << y << " un moveto" << endl
+	     << "(" << text << ") show" << endl;
 }
 
 
