@@ -33,13 +33,13 @@ main (int argc, char* argv[])
   PS::unit (f, 3.6);
 
   PS::lineWidth (f, 0);
-  PS::rect (f, 30, 100, 0.2, nails);
-  PS::curve (f, 30, 100, false, false, path);
+  PS::rect (f, 24, 100, 0.2, nails);
+  PS::curve (f, 24, 100, false, false, path);
   PS::showpage (f);
 
   PS::lineWidth (f, 0);
-  PS::rect (f, 30, 100, 0.2, nails);
-  PS::curve (f, 30, 100, false, false, bezier);
+  PS::rect (f, 24, 100, 0.2, nails);
+  PS::curve (f, 24, 100, false, false, bezier);
   PS::showpage (f);
 
   f.close ();

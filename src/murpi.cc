@@ -321,9 +321,6 @@ path2bezier (points path, int depth)
 
   // ensure correct start and end conditions
   path.insert (path.begin(), path[0]);
-  path.insert (path.begin(), path[0]);
-  path.insert (path.end(), path[path.size () - 1]);
-  path.insert (path.end(), path[path.size () - 1]);
   path.insert (path.end(), path[path.size () - 1]);
 
   // calculate bezier curves
@@ -331,6 +328,9 @@ path2bezier (points path, int depth)
     {
       line2bezier (path[i], path[i+1], path[i+2], path[i+3], bezier, depth);
     }
+
+  // add "forgotten" last point
+  bezier.insert (bezier.end(), path[path.size () - 1]);
 
   return bezier;
 }
