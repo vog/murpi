@@ -10,27 +10,27 @@
 
 
 /*
- * tests whether "seq" would cause a small crash
+ * tests whether "murpi" would cause a small crash
  */
 
 bool
-test_whoops (const char* seq);
+test_whoops (char const* murpi);
 
 
 /*
- * tests whether "seq" would cause a crash without "ign"
+ * tests whether "murpi" would cause a crash without "ign"
  */
 
 bool
-test_crash (const char* seq, char ign);
+test_crash (char const* murpi, char ign);
 
 
 /*
- * tests whether "seq" is murphistic
+ * tests whether "murpi" is murphistic
  */
 
 bool
-test_murphy (const char* seq, char start, char end);
+test_murpi (char const* murpi, char start, char end);
 
 
 /*
@@ -38,7 +38,7 @@ test_murphy (const char* seq, char start, char end);
  */
 
 string
-create_murphy (char start, char end);
+create_murpi (char start, char end);
 
 
 /*
@@ -46,7 +46,7 @@ create_murphy (char start, char end);
  */
 
 string
-sign_murphy (const char* seq);
+murpi2sign (char const* murpi);
 
 
 /*
@@ -54,7 +54,7 @@ sign_murphy (const char* seq);
  */
 
 string
-murpi2way (const string seq, const string sgn);
+murpi2way (string const& murpi, string const& sign);
 
 
 /*
@@ -66,11 +66,11 @@ create_nails (int num);
 
 
 /*
- * way -> points
+ * way -> path
  */
 
 points
-way2points (const string way, const points nails);
+way2path (string const& way, points const& nails);
 
 
 /*
@@ -78,7 +78,7 @@ way2points (const string way, const points nails);
  */
 
 void
-search_murphy (int length, char start, char end);
+search_murphi (int length, char start, char end);
 
 
 #endif

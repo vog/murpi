@@ -20,35 +20,35 @@ public:
 
   operator double () const;
 
-  friend point
-  operator - (const point& p);
+  point
+  operator - ();
 
   point&
-  operator += (const point& p);
+  operator += (point const& p);
 
   friend point
-  operator + (const point& a, const point& b);
+  operator + (point const& a, point const& b);
 
   point&
-  operator -= (const point& p);
+  operator -= (point const& p);
 
   friend point
-  operator - (const point& a, const point& b);
+  operator - (point const& a, point const& b);
 
   point&
   operator *= (double d);
 
   friend point
-  operator * (const point& a, double d);
+  operator * (point const& a, double d);
 
   friend point
-  operator * (double d, const point& a);
+  operator * (double d, point const& a);
 
   point&
   operator /= (double d);
 
   friend point
-  operator / (const point& a, double d);
+  operator / (point const& a, double d);
 
 };
 
@@ -62,7 +62,7 @@ class points : public vector<point>
 public:
 
   points&
-  operator << (const point& p);
+  operator << (point const& p);
 
 };
 

@@ -13,18 +13,18 @@
 int
 main (int argc, char* argv[])
 {
-  const int num = 18;
-  string c = create_murphy ('A', 'A'+num-1);
+  int const num = 18;
+  string c = create_murpi ('A', 'A'+num-1);
   cout << "(" << num << "-" << c.length () << ") " << c << " <"
-       << (test_murphy (c.data (), 'A', 'A'+num-1) ? "yeah" : "D'OH!")
+       << (test_murpi (c.data (), 'A', 'A'+num-1) ? "yeah" : "D'OH!")
        << ">" << endl;
-  cout << "(" << num << "-" << c.length () << ") " << sign_murphy (c.data ()) << endl;
+  cout << "(" << num << "-" << c.length () << ") " << murpi2sign (c.data ()) << endl;
 
   points nails = create_nails (7);
-  string seq = argc <= 1 ? create_murphy('A', 'E') : argv[1];
-  string sgn = argc <= 2 ? sign_murphy (seq.data()) : argv[2];
+  string seq = argc <= 1 ? create_murpi('A', 'E') : argv[1];
+  string sgn = argc <= 2 ? murpi2sign (seq.data()) : argv[2];
   string way = murpi2way (seq, sgn);
-  points path = way2points (way, nails);
+  points path = way2path (way, nails);
   points bezier = SimpleNormedCubicBezier().calc (path, 100);
 
   cout << sgn << endl << seq << endl;

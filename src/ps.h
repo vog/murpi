@@ -21,11 +21,6 @@ public:
   virtual
   ~PS () {};
 
-protected:
-
-  virtual void
-  print (ostream& out) = 0;
-
 public:
 
   // initialization
@@ -56,12 +51,12 @@ public:
   // draws some rectangles
   static ostream&
   rect (ostream &out, double offx, double offy, double width,
-	const points& rects);
+	points const& rects);
 
   // draws a curve
   static ostream&
   curve (ostream& out, double offx, double offy, bool close, bool fill,
-	 const points& path);
+	 points const& path);
 
 };
 

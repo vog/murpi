@@ -80,7 +80,7 @@ PS::grestore (ostream& out)
 
 ostream&
 PS::rect (ostream& out, double offx, double offy, double width,
-	  const points& rects)
+	  points const& rects)
 {
   for (uint i = 0; i < rects.size(); i++)
     {
@@ -103,7 +103,7 @@ PS::rect (ostream& out, double offx, double offy, double width,
 
 ostream&
 PS::curve (ostream& out, double offx, double offy, bool close, bool fill,
-	   const points& path)
+	   points const& path)
 {
   out << "newpath" << endl;
   for (uint i = 0, s = path.size (); i < s; i++)

@@ -9,7 +9,7 @@
  */
 
 points
-Bezier2P::calc (const points& path, int steps)
+Bezier2P::calc (points const& path, int steps)
 {
   const uint size = path.size ();
   points bezier;
@@ -57,8 +57,8 @@ Bezier2P::calc (const points& path, int steps)
  */
 
 void
-QuadraticBezier::calc2P (const point& p0, const point& p1,
-			 const point& d0, const point& d1,
+QuadraticBezier::calc2P (point const& p0, point const& p1,
+			 point const& d0, point const& d1,
 			 points& bezier, int steps)
 {
   // calculate the common factor
@@ -89,8 +89,8 @@ QuadraticBezier::calc2P (const point& p0, const point& p1,
  */
 
 void
-CubicBezier::calc2P (const point& p0, const point& p1,
-		     const point& d0, const point& d1,
+CubicBezier::calc2P (point const& p0, point const& p1,
+		     point const& d0, point const& d1,
 		     points& bezier, int steps)
 {
   // norm
@@ -127,7 +127,7 @@ CubicBezier::calc2P (const point& p0, const point& p1,
  */
 
 double
-CubicBezier::norm (const point& p)
+CubicBezier::norm (point const& p)
 {
   return 0;
 }
@@ -138,7 +138,7 @@ CubicBezier::norm (const point& p)
  */
 
 double
-SimpleNormedCubicBezier::norm (const point& p)
+SimpleNormedCubicBezier::norm (point const& p)
 {
   return p;
 }
@@ -149,7 +149,7 @@ SimpleNormedCubicBezier::norm (const point& p)
  */
 
 double
-AbsNormedCubicBezier::norm (const point& p)
+AbsNormedCubicBezier::norm (point const& p)
 {
   return fabs (p.x) + fabs (p.y);
 }

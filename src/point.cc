@@ -18,14 +18,14 @@ point::operator double () const
 
 
 point
-operator - (const point& p)
+point::operator - ()
 {
-  return point (-p.x, -p.y);
+  return point (-x, -y);
 }
 
 
 point&
-point::operator += (const point& p)
+point::operator += (point const& p)
 {
   x += p.x;
   y += p.y;
@@ -34,21 +34,21 @@ point::operator += (const point& p)
 
 
 point
-operator + (const point& a, const point& b)
+operator + (point const& a, point const& b)
 {
   return point (a) += b;
 }
 
 
 point&
-point::operator -= (const point& p)
+point::operator -= (point const& p)
 {
-  return *this += -p;
+  return *this += -(point)p;
 }
 
 
 point
-operator - (const point& a, const point& b)
+operator - (point const& a, point const& b)
 {
   return point (a) -= b;
 }
@@ -64,14 +64,14 @@ point::operator *= (double d)
 
 
 point
-operator * (const point& a, double d)
+operator * (point const& a, double d)
 {
   return point (a) *= d;
 }
 
 
 point
-operator * (double d, const point& a)
+operator * (double d, point const& a)
 {
   return a * d;
 }
@@ -85,14 +85,14 @@ point::operator /= (double d)
 
 
 point
-operator / (const point& a, double d)
+operator / (point const& a, double d)
 {
   return point (a) /= d;
 }
 
 
 points&
-points::operator << (const point& p)
+points::operator << (point const& p)
 {
   insert (end (), p);
   return *this;

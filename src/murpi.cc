@@ -9,36 +9,36 @@
 
 
 /*
- * tests whether "seq" would cause a small crash
+ * tests whether "murpi" would cause a small crash
  */
 
 bool
-test_whoops (const char *seq)
+test_whoops (char const* murpi)
 {
-  for (; *seq; seq++)
+  for (; *murpi; murpi++)
     {
-      if (seq[0] == seq[1]) return true;
+      if (murpi[0] == murpi[1]) return true;
     }
   return false;
 }
 
 
 /*
- * tests whether "seq" would cause a crash without "ign"
+ * tests whether "murpi" would cause a crash without "ign"
  */
 
 bool
-test_crash (const char* seq, char ign)
+test_crash (char const* murpi, char ign)
 {
-  char s[strlen (seq)];
+  char s[strlen (murpi)];
   char *p = s;
 
-  for (; *seq; seq++)
+  for (; *murpi; murpi++)
     {
-      if (*seq != ign)
+      if (*murpi != ign)
 	{
-	  if (p == s || *(p-1) != *seq)
-	    *p++ = *seq;
+	  if (p == s || *(p-1) != *murpi)
+	    *p++ = *murpi;
 	  else
 	    p--;
 	}
@@ -49,15 +49,15 @@ test_crash (const char* seq, char ign)
 
 
 /*
- * tests whether "seq" is murphistic
+ * tests whether "murpi" is murphistic
  */
 
 bool
-test_murphy (const char* seq, char start, char end)
+test_murpi (char const* murpi, char start, char end)
 {
   for (char c = start; c <= end; c++)
     {
-      if (!test_crash (seq, c)) return false;
+      if (!test_crash (murpi, c)) return false;
     }
 
   return true;
@@ -69,7 +69,7 @@ test_murphy (const char* seq, char start, char end)
  */
 
 string
-create_murphy (char start, char end)
+create_murpi (char start, char end)
 {
   string s;
   s += start;
@@ -89,10 +89,10 @@ create_murphy (char start, char end)
  */
 
 string
-sign_murphy (const char* seq)
+murpi2sign (char const* murpi)
 {
-  string s (seq);
-  int l = strlen (seq);
+  string s (murpi);
+  int l = strlen (murpi);
   s[0] = '+';
   for (;;)
     {
@@ -105,7 +105,7 @@ sign_murphy (const char* seq)
       // sign all nails of this kind
       char c='+';
       for (; i<l; i++)
-	if (seq[i]==n)
+	if (murpi[i]==n)
 	  s[i] = (c = '+'+'-'-c);
     }
 }
@@ -116,24 +116,24 @@ sign_murphy (const char* seq)
  */
 
 string
-murpi2way (const string seq, const string sgn)
+murpi2way (string const& murpi, string const& sign)
 {
   string s;
 
-  for (uint i = 1; i < seq.length (); i++)
+  for (uint i = 1; i < murpi.length (); i++)
     {
-      int d = seq[i] - seq[i-1];
+      int d = murpi[i] - murpi[i-1];
       if (d == 0)
 	{
-	  s += (sgn[i-1] == sgn[i]) ? "OO" : "|";
+	  s += (sign[i-1] == sign[i]) ? "OO" : "|";
 	}
       else
 	{
 	  char c = d > 0 ? '+' : '-';
 	  d = abs(d);
-	  if (sgn[i-1] != c) s += 'O';
+	  if (sign[i-1] != c) s += 'O';
 	  for (int j = 1; j < d; j++) s += '_';
-	  s += (sgn[i] != c) ? "_O" : "-";
+	  s += (sign[i] != c) ? "_O" : "-";
 	}
     }
 
@@ -187,11 +187,11 @@ public:
 
 
 /*
- * way -> points
+ * way -> path
  */
 
 points
-way2points (const string way, const points nails)
+way2path (string const& way, points const& nails)
 {
   points p;
   map<int,way_params> m;
@@ -244,7 +244,7 @@ way2points (const string way, const points nails)
  */
 
 void
-search_murphy (int length, char start, char end)
+search_murpi (int length, char start, char end)
 {
   char s[length+1];
   char *t = s;
@@ -256,7 +256,7 @@ search_murphy (int length, char start, char end)
       for (; t < s+length; t++) *t = start;
 
       if (!test_whoops (s)
-	  && test_murphy (s, start, end))
+	  && test_murpi (s, start, end))
 	cout << "(" << ++n << ")\t" << s << endl;
 
       for (t--; t >= s && *t == end; t--);

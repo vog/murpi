@@ -19,7 +19,7 @@ public:
 
   // calculates the bezier curve
   virtual points
-  calc (const points& path, int steps) = 0;
+  calc (points const& path, int steps) = 0;
 
 };
 
@@ -34,14 +34,14 @@ public:
 
   // calculates the bezier curve
   virtual points
-  calc (const points& path, int steps);
+  calc (points const& path, int steps);
 
 protected:
 
   // calculates the bezier curve through 2 points
   virtual void
-  calc2P (const point& p0, const point& p1,
-	  const point& d0, const point& d1,
+  calc2P (point const& p0, point const& p1,
+	  point const& d0, point const& d1,
 	  points& bezier, int steps) = 0;
 
 };
@@ -57,8 +57,8 @@ protected:
 
   // calculates a quadratic bezier curve through 2 points
   virtual void
-  calc2P (const point& p0, const point& p1,
-	  const point& d0, const point& d1,
+  calc2P (point const& p0, point const& p1,
+	  point const& d0, point const& d1,
 	  points& bezier, int steps);
 
 };
@@ -74,13 +74,13 @@ protected:
 
   // calculates a cubic bezier curve through 2 points
   virtual void
-  calc2P (const point& p0, const point& p1,
-	  const point& d0, const point& d1,
+  calc2P (point const& p0, point const& p1,
+	  point const& d0, point const& d1,
 	  points& bezier, int steps);
 
   // normalizing function
   virtual double
-  norm (const point& p);
+  norm (point const& p);
 
 };
 
@@ -95,7 +95,7 @@ protected:
 
   // normalizing function
   virtual double
-  norm (const point& p);
+  norm (point const& p);
 
 };
 
@@ -110,7 +110,7 @@ protected:
 
   // normalizing function
   virtual double
-  norm (const point& p);
+  norm (point const& p);
 
 };
 
