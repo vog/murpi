@@ -18,11 +18,11 @@ main (int argc, char* argv[])
   cout << "(" << num << "-" << c.length () << ") " << c << " <"
        << (test_murpi (c.data (), 'A', 'A'+num-1) ? "yeah" : "D'OH!")
        << ">" << endl;
-  cout << "(" << num << "-" << c.length () << ") " << murpi2sign (c.data ()) << endl;
+  cout << "(" << num << "-" << c.length () << ") " << murpi2sign (c) << endl;
 
   points nails = create_nails (7, 40);
   string murpi = argc <= 1 ? create_murpi ('A', 'G') : argv[1];
-  string sign = argc <= 2 ? murpi2sign (murpi.data ()) : argv[2];
+  string sign = argc <= 2 ? murpi2sign (murpi) : argv[2];
   string way = murpi2way (murpi, sign);
   points path = way2path (way, nails);
   points bezier = SimpleNormedCubicBezier().calc (path, 100);
@@ -35,19 +35,25 @@ main (int argc, char* argv[])
 
   PS::landscape (f);
   PS::lineWidth (f, 0);
+  PS::setfont (f, "Courier", 7);
+  PS::show (f, 10, -20, murpi.data ());
+  PS::show (f, 10, -18, sign.data ());
   PS::rect (f, 70, -100, 0.2, nails);
   PS::curve (f, 70, -100, false, false, path);
   PS::showpage (f);
 
   PS::landscape (f);
   PS::lineWidth (f, 0);
+  PS::setfont (f, "Courier", 7);
+  PS::show (f, 10, -20, murpi.data ());
+  PS::show (f, 10, -18, sign.data ());
   PS::rect (f, 70, -100, 0.2, nails);
   PS::curve (f, 70, -100, false, false, bezier);
   PS::showpage (f);
 
   nails = create_nails (4, 30);
   murpi = create_murpi ('A', 'D');
-  sign = murpi2sign (murpi.data ());
+  sign = murpi2sign (murpi);
   way = murpi2way (murpi, sign);
   path = way2path (way, nails);
   bezier = SimpleNormedCubicBezier().calc (path, 100);
@@ -55,6 +61,10 @@ main (int argc, char* argv[])
   PS::unit (f, 6);
   PS::landscape (f);
   PS::lineWidth (f, 0);
+  PS::setfont (f, "Courier", 32);
+  PS::show (f, 10, -12, murpi);
+  PS::show (f, 10, -16, sign);
+  PS::show (f, 10, -20, way);
   PS::rect (f, 20, -40, 0.2, nails);
   PS::curve (f, 20, -40, false, false, path);
   PS::showpage (f);
@@ -62,6 +72,10 @@ main (int argc, char* argv[])
   PS::unit (f, 6);
   PS::landscape (f);
   PS::lineWidth (f, 0);
+  PS::setfont (f, "Courier", 32);
+  PS::show (f, 10, -12, murpi);
+  PS::show (f, 10, -16, sign);
+  PS::show (f, 10, -20, way);
   PS::rect (f, 20, -40, 0.2, nails);
   PS::curve (f, 20, -40, false, false, bezier);
   PS::showpage (f);
