@@ -48,7 +48,7 @@ Bezier2P::calc (const points& path, int steps)
 	  bezier, steps);
 
   // add "forgotten" last point
-  bezier.insert (bezier.end(), path[size-1]);
+  bezier << path[size-1];
 
   return bezier;
 }
