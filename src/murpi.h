@@ -8,8 +8,8 @@
 class point
 {
 public:
-  int x, y;
-  point (int x, int y)
+  double x, y;
+  point (double x, double y)
   {
     this->x = x;
     this->y = y;
@@ -20,7 +20,7 @@ class points : public vector<point>
 {
 public:
   points &
-  add (int x, int y)
+  add (double x, double y)
   {
     insert (end (), point (x, y));
     return *this;
