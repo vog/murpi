@@ -30,7 +30,7 @@ main (int argc, char* argv[])
   cout << sgn << endl << seq << endl;
   cout << endl << way << endl;
 
-  ofstream f ("test.ps");
+  ofstream f ("murpi.ps");
   PS::init (f);
   PS::unit (f, 3.6);
 
@@ -45,7 +45,7 @@ main (int argc, char* argv[])
   PS::showpage (f);
 
   f.close ();
-  system ("gv test.ps");
+  system ("gv murpi.ps");
 
   return 0;
 }
