@@ -37,7 +37,7 @@ PS::unit (ostream& out, double un)
 ostream&
 PS::landscape (ostream& out)
 {
-  out << "90 rotate" << endl;
+  return out << "90 rotate" << endl;
 }
 
 
@@ -82,6 +82,19 @@ ostream&
 PS::grestore (ostream& out)
 {
   return out << "grestore" << endl;
+}
+
+
+/*
+ * draws text
+ */
+
+ostream&
+PS::show (ostream& out, double x, double y, char const* text)
+{
+  return out << "newpath" << endl
+	     << x << " un " << y << " un moveto" << endl
+	     << "{" << text << "}" << endl;
 }
 
 

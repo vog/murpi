@@ -52,6 +52,10 @@ public:
   static ostream&
   grestore (ostream& out);
 
+  // draws text
+  ostream&
+  PS::show (ostream& out, double x, double y, char const* text);
+
   // draws some rectangles
   static ostream&
   rect (ostream &out, double offx, double offy, double width,
