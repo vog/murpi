@@ -80,7 +80,8 @@ main (int argc, char* argv[])
   PS::show (f, 10, -18, sign);
   PS::show (f, 10, -20, murpi);
   PS::rect (f, 70, -100, 0.2, nails);
-  PS::curve (f, 70, -100, false, false, path);
+  path.setBounds (rect (10, -21, 330, -230));
+  PS::curve (f, 0, 0, false, false, path);
   PS::showpage (f);
 
   PS::landscape (f);
@@ -89,7 +90,8 @@ main (int argc, char* argv[])
   PS::show (f, 10, -18, sign);
   PS::show (f, 10, -20, murpi);
   PS::rect (f, 70, -100, 0.2, nails);
-  PS::curve (f, 70, -100, false, false, bezier);
+  bezier.setBounds (rect (10, -21, 330, -230));
+  PS::curve (f, 0, 0, false, false, bezier);
   PS::showpage (f);
 
   nails = create_nails (4, 30);
@@ -97,28 +99,28 @@ main (int argc, char* argv[])
   sign = murpi2sign (murpi);
   way = murpi2way (murpi, sign);
   path = way2path (way, nails);
-  bezier = SimpleNormedCubicBezier().calc (path, 100);
+  bezier = SimpleNormedCubicBezier ().calc (path, 100);
 
-  PS::unit (f, 6);
   PS::landscape (f);
   PS::lineWidth (f, 0);
   PS::setfont (f, "Courier", 32);
-  PS::show (f, 10, -6, sign);
-  PS::show (f, 10, -10, murpi);
-  PS::show (f, 10, -20, way);
-  PS::rect (f, 20, -40, 0.2, nails);
-  PS::curve (f, 20, -40, false, false, path);
+  PS::show (f, 10, -10, sign);
+  PS::show (f, 10, -18, murpi);
+  PS::show (f, 10, -35, way);
+  PS::rect (f, 70, -100, 0.2, nails);
+  path.setBounds (rect (40, -50, 330, -230));
+  PS::curve (f, 0, 0, false, false, path);
   PS::showpage (f);
 
-  PS::unit (f, 6);
   PS::landscape (f);
   PS::lineWidth (f, 0);
   PS::setfont (f, "Courier", 32);
-  PS::show (f, 10, -6, sign);
-  PS::show (f, 10, -10, murpi);
-  PS::show (f, 10, -20, way);
-  PS::rect (f, 20, -40, 0.2, nails);
-  PS::curve (f, 20, -40, false, false, bezier);
+  PS::show (f, 10, -10, sign);
+  PS::show (f, 10, -18, murpi);
+  PS::show (f, 10, -35, way);
+  PS::rect (f, 70, -100, 0.2, nails);
+  bezier.setBounds (rect (40, -50, 330, -230));
+  PS::curve (f, 0, 0, false, false, bezier);
   PS::showpage (f);
 
   f.close ();
