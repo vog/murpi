@@ -32,6 +32,10 @@ public:
   static ostream&
   unit (ostream& out, double un = 72);
 
+  // sets landscape output
+  static ostream&
+  landscape (ostream& out);
+
   // sets line width
   static ostream&
   lineWidth (ostream& out, double width = 1);

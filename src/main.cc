@@ -20,8 +20,8 @@ main (int argc, char* argv[])
        << ">" << endl;
   cout << "(" << num << "-" << c.length () << ") " << murpi2sign (c.data ()) << endl;
 
-  points nails = create_nails (7);
-  string murpi = argc <= 1 ? create_murpi ('A', 'E') : argv[1];
+  points nails = create_nails (7, 40);
+  string murpi = argc <= 1 ? create_murpi ('A', 'G') : argv[1];
   string sign = argc <= 2 ? murpi2sign (murpi.data ()) : argv[2];
   string way = murpi2way (murpi, sign);
   points path = way2path (way, nails);
@@ -31,20 +31,22 @@ main (int argc, char* argv[])
   cout << endl << way << endl;
 
   ofstream f ("murpi.ps");
-  PS::init (f, "a4", 1, 3.6);
+  PS::init (f, "a4", 0, 2.5);
 
+  PS::landscape (f);
   PS::lineWidth (f, 0);
-  PS::rect (f, 24, 150, 0.2, nails);
-  PS::curve (f, 24, 150, false, false, path);
+  PS::rect (f, 70, -100, 0.2, nails);
+  PS::curve (f, 70, -100, false, false, path);
   PS::showpage (f);
 
+  PS::landscape (f);
   PS::lineWidth (f, 0);
-  PS::rect (f, 24, 150, 0.2, nails);
-  PS::curve (f, 24, 150, false, false, bezier);
+  PS::rect (f, 70, -100, 0.2, nails);
+  PS::curve (f, 70, -100, false, false, bezier);
   PS::showpage (f);
 
   f.close ();
-  system ("gv -landscape murpi.ps");
+  system ("gv murpi.ps");
 
   return 0;
 }

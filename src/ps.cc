@@ -31,6 +31,17 @@ PS::unit (ostream& out, double un)
 
 
 /*
+ * sets landscape output
+ */
+
+ostream&
+PS::landscape (ostream& out)
+{
+  out << "90 rotate" << endl;
+}
+
+
+/*
  * sets line width
  */
 
