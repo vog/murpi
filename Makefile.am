@@ -9,6 +9,7 @@ ZIP	= zip -r9
 NSIS	= makensis-bz2
 
 bindist:
+	make distclean
 	./configure --prefix=$(bin_PREFIX)
 	make
 	$(SU) "\
