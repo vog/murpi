@@ -1,4 +1,5 @@
 #include <config.h>
+#include <math.h>
 #include <vector>
 #include "point.h"
 
@@ -7,6 +8,12 @@ point::point (double x, double y)
 {
   this->x = x;
   this->y = y;
+}
+
+
+point::operator double () const
+{
+  return sqrt (x*x + y*y);
 }
 
 

@@ -122,7 +122,7 @@ CubicBezier::norm (const point& p)
 double
 SimpleNormedCubicBezier::norm (const point& p)
 {
-  return sqrt ((p.x * p.x) + (p.y * p.y));
+  return p;
 }
 
 

@@ -18,6 +18,8 @@ public:
 
   point (double x, double y);
 
+  operator double () const;
+
   friend point
   operator - (const point& p);
 
