@@ -74,14 +74,6 @@ way2points (const string way, const points nails);
 
 
 /*
- * points -> bezier
- */
-
-points
-path2bezier (const points path, int depth);
-
-
-/*
  * searches all murphy sequences of a given length in the given range
  */
 

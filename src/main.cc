@@ -2,6 +2,7 @@
 #include <fstream>
 #include "murpi.h"
 #include "point.h"
+#include "bezier.h"
 #include "ps.h"
 
 
@@ -24,7 +25,7 @@ main (int argc, char* argv[])
   string sgn = argc <= 2 ? sign_murphy (seq.data()) : argv[2];
   string way = murpi2way (seq, sgn);
   points path = way2points (way, nails);
-  points bezier = path2bezier (path, 100);
+  points bezier = SimpleNormedCubicBezier().calc (path, 100);
 
   cout << sgn << endl << seq << endl;
   cout << endl << way << endl;
