@@ -317,19 +317,22 @@ line2bezier (const point p0, const point p1, const point p2, const point p3,
 points
 path2bezier (points path, int depth)
 {
-  points p;
+  points bezier;
 
+  // ensure correct start and end conditions
   path.insert (path.begin(), path[0]);
   path.insert (path.begin(), path[0]);
   path.insert (path.end(), path[path.size () - 1]);
   path.insert (path.end(), path[path.size () - 1]);
+  path.insert (path.end(), path[path.size () - 1]);
 
+  // calculate bezier curves
   for (uint i = 0, s = path.size (); i + 3 < s; i++)
     {
-      line2bezier (path[i], path[i+1], path[i+2], path[i+3], p, depth);
+      line2bezier (path[i], path[i+1], path[i+2], path[i+3], bezier, depth);
     }
 
-  return p;
+  return bezier;
 }
 
 
