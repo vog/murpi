@@ -15,7 +15,23 @@ class point
 public:
 
   double x, y;
+
   point (double x, double y);
+
+  friend point
+  operator - (const point& p);
+
+  point&
+  operator += (const point& p);
+
+  friend point
+  operator + (const point& a, const point& b);
+
+  point&
+  operator -= (const point& p);
+
+  friend point
+  operator - (const point& a, const point& b);
 
 };
 

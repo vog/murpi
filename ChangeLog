@@ -1,5 +1,7 @@
 2002-05-04  Volker Grabsch  <vog@uni.de>
 
+	* src/point.h (class point): added some operators
+
 	* src/murpi.cc (line2bezier): improved bezier calculation
 
 2002-05-03  Volker Grabsch  <vog@uni.de>
