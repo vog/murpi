@@ -1,31 +1,12 @@
 #ifndef __MURPI_HEADER
 #define __MURPI_HEADER
 
+
+#include <config.h>
 #include <iostream>
 #include <string>
 #include <vector>
-
-class point
-{
-public:
-  double x, y;
-  point (double x, double y)
-  {
-    this->x = x;
-    this->y = y;
-  }
-};
-
-class points : public vector<point>
-{
-public:
-  points &
-  add (double x, double y)
-  {
-    insert (end (), point (x, y));
-    return *this;
-  }
-};
+#include "point.h"
 
 
 /*
