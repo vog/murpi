@@ -46,7 +46,7 @@ create_murphy (char start, char end);
  */
 
 string
-sign_murphy (const char *seq);
+sign_murphy (const char* seq);
 
 
 /*

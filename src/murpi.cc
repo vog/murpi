@@ -13,7 +13,7 @@
  */
 
 bool
-test_whoops (const char* seq)
+test_whoops (const char *seq)
 {
   for (; *seq; seq++)
     {
@@ -28,7 +28,7 @@ test_whoops (const char* seq)
  */
 
 bool
-_test_crash (const char* seq, char ign)
+_test_crash (const char *seq, char ign)
 {
   stack<char> s;
 
@@ -109,7 +109,7 @@ create_murphy (char start, char end)
  */
 
 string
-sign_murphy (const char *seq)
+sign_murphy (const char* seq)
 {
   string s (seq);
   int l = strlen (seq);

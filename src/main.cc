@@ -9,7 +9,7 @@
  */
 
 int
-main (int argc, char *argv[])
+main (int argc, char* argv[])
 {
   const int num = 18;
   string c = create_murphy ('A', 'A'+num-1);
