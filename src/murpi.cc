@@ -303,42 +303,6 @@ path2bezier (points path, int depth)
 
 
 /*
- * points -> PostScript
- */
-
-void
-points2ps (ostream &o, const points nails, const points path)
-{
-  double n = 0.2;
-  int x = 30;
-  int y = 100;
-  o << "%!" << endl;
-  o << "/un {3.6 mul} def" << endl;
-  o << "0 setlinewidth" << endl;
-
-  o << "newpath" << endl;
-  for (uint i = 0; i < path.size(); i++)
-    {
-      o << x+path[i].x << " un " << y+path[i].y << " un "
-	<< (i == 0 ? "moveto" : "lineto") << endl;
-    }
-  o << "stroke" << endl;
-
-  for (uint i = 0; i < nails.size(); i++)
-    {
-      o << "newpath" << endl;
-      o << x+nails[i].x-n << " un " << y+nails[i].y-n << " un moveto" << endl;
-      o << +2*n << " un " << 0 << " un rlineto" << endl;
-      o << 0 << " un " << +2*n << " un rlineto" << endl;
-      o << -2*n << " un " << 0 << " un rlineto" << endl;
-      o << "closepath" << endl;
-      o << "fill" << endl;
-    }
-  o << "showpage" << endl;
-}
-
-
-/*
  * searches all murphy sequences of a given length in the given range
  */
 

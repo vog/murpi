@@ -30,8 +30,12 @@ main (int argc, char* argv[])
 
   ofstream f ("test.ps");
   f << PS::init;
-  points2ps (f, nails, path);
-  points2ps (f, nails, bezier);
+  PS::rect (f, 30, 100, 0.2, nails);
+  PS::curve (f, 30, 100, false, false, path);
+  f << PS::showpage;
+  PS::rect (f, 30, 100, 0.2, nails);
+  PS::curve (f, 30, 100, false, false, bezier);
+  f << PS::showpage;
   f.close ();
   system ("gv test.ps");
 
