@@ -180,39 +180,65 @@ create_nails (int num)
  * way -> points
  */
 
+class way_params
+{
+private:
+  int up,down,left,right;
+
+public:
+  way_params ()
+  {
+    up = down = left = right = 0;
+  }
+
+  int &
+  x (int dx)
+  {
+    return dx > 0 ? right : left;
+  }
+
+  int &
+  y (int dy)
+  {
+    return dy > 0 ? up : down;
+  }
+};
+
 points
 way2points (const string way, const points nails)
 {
   points p;
-  map<int,uint> m;
+  map<int,way_params> m;
   int n = 0;       // current nail
   int x = +1;      // x direction
   int y = +1;      // y direction
 
-  m[n] = 1;
-  p.add (nails[n].x, nails[n].y+y*m[n]);
+  m[n].x(x)++;
+  p.add (nails[n].x, nails[n].y + y*m[n].y(y));
   for (uint i = 0; i < way.length(); i++)
     {
       switch (way[i])
 	{
 	case '-':
 	  n += x;
-	  m[n]++;
 	  y = +1;
-	  p.add (nails[n].x, nails[n].y + y*m[n]);
+	  m[n].y(y)++;
+	  p.add (nails[n].x, nails[n].y + y*m[n].y(y));
 	  break;
 
 	case '_':
 	  n += x;
-	  m[n]++;
 	  y = -1;
-	  p.add (nails[n].x, nails[n].y + y*m[n]);
+	  m[n].y(y)++;
+	  p.add (nails[n].x, nails[n].y + y*m[n].y(y));
 	  break;
 
 	case 'O':
 	  y = -y;
-	  p.add (nails[n].x + x*m[n], nails[n].y);
-	  p.add (nails[n].x, nails[n].y + y*m[n]);
+	  m[n].x(x)++;
+	  m[n].y(y)++;
+	  p.add (nails[n].x + x*m[n].x(x), (m[n].y(+1) - m[n].y(-1)) / 2);
+	  p.add (nails[n].x, nails[n].y + y*m[n].y(y));
 
 	case '|':
 	  x = -x;

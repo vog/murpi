@@ -1,4 +1,6 @@
 2002-05-01  Volker Grabsch  <vog@uni.de>
 
+	* src/murpi.cc (way2points): improved look and size of the path
+
 	* CVS - import
 
