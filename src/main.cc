@@ -29,13 +29,16 @@ main (int argc, char* argv[])
   cout << endl << way << endl;
 
   ofstream f ("test.ps");
-  f << PS::init;
+  PS::init (f);
+  PS::unit (f, 3.6);
+  PS::lineWidth (f, 0);
   PS::rect (f, 30, 100, 0.2, nails);
   PS::curve (f, 30, 100, false, false, path);
-  f << PS::showpage;
+  PS::showpage (f);
+  PS::lineWidth (f, 0);
   PS::rect (f, 30, 100, 0.2, nails);
   PS::curve (f, 30, 100, false, false, bezier);
-  f << PS::showpage;
+  PS::showpage (f);
   f.close ();
   system ("gv test.ps");
 

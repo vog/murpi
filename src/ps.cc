@@ -106,7 +106,7 @@ PS::curve (ostream& out, double offx, double offy, bool close, bool fill,
 	   const points& path)
 {
   out << "newpath" << endl;
-  for (uint i = 0; i < path.size(); i++)
+  for (uint i = 0, s = path.size (); i < s; i++)
     {
       out << offx + path[i].x << " un " << offy + path[i].y << " un "
 	  << (i == 0 ? "moveto" : "lineto") << endl;
