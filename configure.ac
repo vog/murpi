@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 AC_INIT
-AM_INIT_AUTOMAKE(murpi, $(date +%Y-%m-%d))
+AM_INIT_AUTOMAKE(murpi, $(date +%Y_%m_%d))
 AC_CONFIG_SRCDIR([src/main.cc])
 AM_CONFIG_HEADER(config.h)
 CXXFLAGS="-Wall -g -O0"
