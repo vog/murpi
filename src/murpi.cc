@@ -259,7 +259,7 @@ line2bezier (const point p0, const point p1, const point p2, const point p3,
   double dy1 = p3.y - p1.y;
 
   // calculate norming values
-  double d = sqrt ((p1.x-p2.x)*(p1.x-p2.x) + (p1.x-p2.x)*(p1.x-p2.x));
+  double d = sqrt ((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y));
   double d0 = sqrt (dx0*dx0 + dy0*dy0);
   double d1 = sqrt (dx1*dx1 + dy1*dy1);
 
