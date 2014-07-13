@@ -1,0 +1,20 @@
+Murpi – Murphystic Pictures
+===========================
+
+It is possible to hang up a picture on two nails such that it falls
+down if only one of the two nails breaks. Since this is some kind
+of optimization of Murphy's law, I call such an arrangement
+"murphystic". This can be generalized to any number of nails and
+is a popular funny exercise on the theory of fundamental groups.
+
+Murpi is a program that generates such arrangements and visializes
+them as PostScript files. It is implemented in C++ and can be
+compiled as follows:
+
+    ./autogen.sh
+    ./configure
+    make
+
+There is also a collection of sample outputs (converted to PDF):
+
+    https://github.com/vog/murpi/raw/master/murpi.pdf
