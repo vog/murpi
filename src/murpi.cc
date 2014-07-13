@@ -122,7 +122,7 @@ murpi2way (std::string const& murpi, std::string const& sign)
 {
   std::string s;
 
-  for (uint i = 1; i < murpi.length (); i++)
+  for (unsigned int i = 1; i < murpi.length (); i++)
     {
       int d = murpi[i] - murpi[i-1];
       if (d == 0)
@@ -204,7 +204,7 @@ way2path (std::string const& way, points const& nails)
   m[n].y(y)++;
   p << point (nails[n].x - 20, -80);
   p << point (nails[n].x, nails[n].y + y*m[n].y(y));
-  for (uint i = 0; i < way.length(); i++)
+  for (unsigned int i = 0; i < way.length(); i++)
     {
       switch (way[i])
 	{

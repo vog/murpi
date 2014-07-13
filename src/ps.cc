@@ -136,7 +136,7 @@ std::ostream&
 PS::rect (std::ostream& out, double offx, double offy, double width,
 	  points const& rects)
 {
-  for (uint i = 0; i < rects.size(); i++)
+  for (unsigned int i = 0; i < rects.size(); i++)
     {
       out << "newpath" << std::endl
 	  << offx + rects[i].x - width/2 << " un "
@@ -160,7 +160,7 @@ PS::curve (std::ostream& out, double offx, double offy, bool close, bool fill,
 	   points const& path)
 {
   out << "newpath" << std::endl;
-  for (uint i = 0, s = path.size (); i < s; i++)
+  for (unsigned int i = 0, s = path.size (); i < s; i++)
     {
       out << offx + path[i].x << " un " << offy + path[i].y << " un "
 	  << (i == 0 ? "moveto" : "lineto") << std::endl;
