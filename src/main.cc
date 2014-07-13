@@ -15,28 +15,28 @@
 void
 about ()
 {
-  cout << endl
-       << "   Murpi - Murphistic Images" << endl
-       << "   =========================" << endl
-       << endl
-       << "   Version " VERSION << endl
-       << endl
-       << "   (C) " COPYRIGHT << endl
-       << endl
-       << "   This program is free software; you can redistribute it and/or modify" << endl
-       << "   it under the terms of the GNU General Public License as published by" << endl
-       << "   the Free Software Foundation; either version 2 of the License, or" << endl
-       << "   (at your option) any later version." << endl
-       << endl
-       << "   This program is distributed in the hope that it will be useful," << endl
-       << "   but WITHOUT ANY WARRANTY; without even the implied warranty of" << endl
-       << "   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the" << endl
-       << "   GNU General Public License for more details." << endl
-       << endl
-       << "   You should have received a copy of the GNU General Public License" << endl
-       << "   along with this program; if not, write to the Free Software" << endl
-       << "   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA" << endl
-       << endl;
+  std::cout << std::endl
+            << "   Murpi - Murphistic Images" << std::endl
+            << "   =========================" << std::endl
+            << std::endl
+            << "   Version " VERSION << std::endl
+            << std::endl
+            << "   (C) " COPYRIGHT << std::endl
+            << std::endl
+            << "   This program is free software; you can redistribute it and/or modify" << std::endl
+            << "   it under the terms of the GNU General Public License as published by" << std::endl
+            << "   the Free Software Foundation; either version 2 of the License, or" << std::endl
+            << "   (at your option) any later version." << std::endl
+            << std::endl
+            << "   This program is distributed in the hope that it will be useful," << std::endl
+            << "   but WITHOUT ANY WARRANTY; without even the implied warranty of" << std::endl
+            << "   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the" << std::endl
+            << "   GNU General Public License for more details." << std::endl
+            << std::endl
+            << "   You should have received a copy of the GNU General Public License" << std::endl
+            << "   along with this program; if not, write to the Free Software" << std::endl
+            << "   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA" << std::endl
+            << std::endl;
 }
 
 
@@ -49,29 +49,29 @@ main (int argc, char* argv[])
 {
   about ();
 
-  cout << "calculating ." << flush;
+  std::cout << "calculating ." << std::flush;
   int const num = 22;
-  string c = create_murpi ('A', 'A'+num-1);
-  cout << "." << flush;
-  ofstream out ("murpi.txt");
+  std::string c = create_murpi ('A', 'A'+num-1);
+  std::cout << "." << std::flush;
+  std::ofstream out ("murpi.txt");
   out << "(" << num << "-" << c.length () << ") " << c << " <"
       << (test_murpi (c.data (), 'A', 'A'+num-1) ? "yeah" : "D'OH!")
-      << ">" << endl;
-  cout << "." << flush;
-  out << "(" << num << "-" << c.length () << ") " << murpi2sign (c) << endl;
-  cout << ". ready  (output to murpi.txt)" << endl << endl;
+      << ">" << std::endl;
+  std::cout << "." << std::flush;
+  out << "(" << num << "-" << c.length () << ") " << murpi2sign (c) << std::endl;
+  std::cout << ". ready  (output to murpi.txt)" << std::endl << std::endl;
 
   points nails = create_nails (7, 40);
-  string murpi = argc <= 1 ? create_murpi ('A', 'G') : argv[1];
-  string sign = argc <= 2 ? murpi2sign (murpi) : argv[2];
-  string way = murpi2way (murpi, sign);
+  std::string murpi = argc <= 1 ? create_murpi ('A', 'G') : argv[1];
+  std::string sign = argc <= 2 ? murpi2sign (murpi) : argv[2];
+  std::string way = murpi2way (murpi, sign);
   points path = way2path (way, nails);
   points bezier = SimpleNormedCubicBezier().calc (path, 100);
 
-  cout << sign << endl << murpi << endl;
-  cout << endl << way << endl;
+  std::cout << sign << std::endl << murpi << std::endl;
+  std::cout << std::endl << way << std::endl;
 
-  ofstream f ("murpi.ps");
+  std::ofstream f ("murpi.ps");
   PS::init (f, "a4", 0, 2.5);
 
   PS::landscape (f);
@@ -125,7 +125,7 @@ main (int argc, char* argv[])
 
   f.close ();
 
-  cout << endl << "... ready  (output to murpi.ps)" << endl << endl;
+  std::cout << std::endl << "... ready  (output to murpi.ps)" << std::endl << std::endl;
 
   return 0;
 }

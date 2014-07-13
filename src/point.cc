@@ -219,7 +219,7 @@ points::setBounds (rect const& bounds, bool keep_proportion)
 
   double fx = bounds.size ().x / s.x;
   double fy = bounds.size ().y / s.y;
-  if (keep_proportion) fx = fy = min (fx, fy);
+  if (keep_proportion) fx = fy = std::min (fx, fy);
   double ox = bounds.p1 ().x - r.p1 ().x * fx;
   double oy = bounds.p1 ().y - r.p1 ().y * fy;
 

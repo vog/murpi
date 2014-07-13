@@ -37,7 +37,7 @@ test_murpi (char const* murpi, char start, char end);
  * creates a murphistic sequence.
  */
 
-string
+std::string
 create_murpi (char start, char end);
 
 
@@ -45,16 +45,16 @@ create_murpi (char start, char end);
  * creates the +/- of a murphistic sequence.
  */
 
-string
-murpi2sign (string const& murpi);
+std::string
+murpi2sign (std::string const& murpi);
 
 
 /*
  * murpi -> way
  */
 
-string
-murpi2way (string const& murpi, string const& sign);
+std::string
+murpi2way (std::string const& murpi, std::string const& sign);
 
 
 /*
@@ -70,7 +70,7 @@ create_nails (int num, double dist);
  */
 
 points
-way2path (string const& way, points const& nails);
+way2path (std::string const& way, points const& nails);
 
 
 /*

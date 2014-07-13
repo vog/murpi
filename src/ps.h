@@ -16,8 +16,8 @@ class PS
 {
 public:
 
-  friend ostream&
-  operator << (ostream& out, PS* ps);
+  friend std::ostream&
+  operator << (std::ostream& out, PS* ps);
 
   virtual
   ~PS () {};
@@ -25,54 +25,54 @@ public:
 public:
 
   // initialization
-  static ostream&
-  init (ostream& out, char const* mediaType = "letter", int orientation = 0,
+  static std::ostream&
+  init (std::ostream& out, char const* mediaType = "letter", int orientation = 0,
 	double un = 72);
 
   // sets length unit
-  static ostream&
-  unit (ostream& out, double un = 72);
+  static std::ostream&
+  unit (std::ostream& out, double un = 72);
 
   // sets landscape output
-  static ostream&
-  landscape (ostream& out);
+  static std::ostream&
+  landscape (std::ostream& out);
 
   // sets line width
-  static ostream&
-  lineWidth (ostream& out, double width = 1);
+  static std::ostream&
+  lineWidth (std::ostream& out, double width = 1);
 
   // sets font
-  static ostream&
-  setfont (ostream& out, char const* font, int size);
+  static std::ostream&
+  setfont (std::ostream& out, char const* font, int size);
 
   // shows current page
-  static ostream&
-  showpage (ostream& out);
+  static std::ostream&
+  showpage (std::ostream& out);
 
   // saves current state
-  static ostream&
-  gsave (ostream& out);
+  static std::ostream&
+  gsave (std::ostream& out);
 
   // restores saved state
-  static ostream&
-  grestore (ostream& out);
+  static std::ostream&
+  grestore (std::ostream& out);
 
   // draws text
-  static ostream&
-  show (ostream& out, double x, double y, char const* text);
+  static std::ostream&
+  show (std::ostream& out, double x, double y, char const* text);
 
   // draws text
-  static ostream&
-  show (ostream& out, double x, double y, string const& text);
+  static std::ostream&
+  show (std::ostream& out, double x, double y, std::string const& text);
 
   // draws some rectangles
-  static ostream&
-  rect (ostream &out, double offx, double offy, double width,
+  static std::ostream&
+  rect (std::ostream &out, double offx, double offy, double width,
 	points const& rects);
 
   // draws a curve
-  static ostream&
-  curve (ostream& out, double offx, double offy, bool close, bool fill,
+  static std::ostream&
+  curve (std::ostream& out, double offx, double offy, bool close, bool fill,
 	 points const& path);
 
 };

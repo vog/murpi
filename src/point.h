@@ -107,7 +107,7 @@ public:
  * a vector of points
  */
 
-class points : public vector<point>
+class points : public std::vector<point>
 {
 public:
 

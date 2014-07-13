@@ -70,10 +70,10 @@ test_murpi (char const* murpi, char start, char end)
  * creates a murphistic sequence.
  */
 
-string
+std::string
 create_murpi (char start, char end)
 {
-  string s;
+  std::string s;
   s += start;
   for (char c = start + 1; c <= end; c++)
     {
@@ -90,10 +90,10 @@ create_murpi (char start, char end)
  * creates the +/- of a murphistic sequence.
  */
 
-string
-murpi2sign (string const& murpi)
+std::string
+murpi2sign (std::string const& murpi)
 {
-  string s = murpi;
+  std::string s = murpi;
   int const l = murpi.length ();
   s[0] = '+';
   for (;;)
@@ -117,10 +117,10 @@ murpi2sign (string const& murpi)
  * murpi -> way
  */
 
-string
-murpi2way (string const& murpi, string const& sign)
+std::string
+murpi2way (std::string const& murpi, std::string const& sign)
 {
-  string s;
+  std::string s;
 
   for (uint i = 1; i < murpi.length (); i++)
     {
@@ -132,7 +132,7 @@ murpi2way (string const& murpi, string const& sign)
       else
 	{
 	  char c = d > 0 ? '+' : '-';
-	  d = abs(d);
+	  d = std::abs(d);
 	  if (sign[i-1] != c) s += 'O';
 	  for (int j = 1; j < d; j++) s += '_';
 	  s += (sign[i] != c) ? "_O" : "-";
@@ -193,10 +193,10 @@ public:
  */
 
 points
-way2path (string const& way, points const& nails)
+way2path (std::string const& way, points const& nails)
 {
   points p;
-  map<int,way_params> m;
+  std::map<int,way_params> m;
   int n = 0;       // current nail
   int x = +1;      // x direction
   int y = +1;      // y direction
@@ -259,7 +259,7 @@ search_murpi (int length, char start, char end)
 
       if (!test_whoops (s)
 	  && test_murpi (s, start, end))
-	cout << "(" << ++n << ")\t" << s << endl;
+	std::cout << "(" << ++n << ")\t" << s << std::endl;
 
       for (t--; t >= s && *t == end; t--);
       if (t < s) break;
@@ -268,5 +268,5 @@ search_murpi (int length, char start, char end)
       t++;
     }
 
-  cout << endl;
+  std::cout << std::endl;
 }

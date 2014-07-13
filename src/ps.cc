@@ -9,17 +9,17 @@
  * initialization
  */
 
-ostream&
-PS::init (ostream& out, char const* mediaType, int orientation, double un)
+std::ostream&
+PS::init (std::ostream& out, char const* mediaType, int orientation, double un)
 {
-  return out << "%!" << endl
+  return out << "%!" << std::endl
 	     << "<< /MediaType {" << mediaType
 	     << "} /Orientation " << orientation
-	     << " >> setpagedevice" << endl
-	     << "/un {" << un << " mul} def" << endl
-	     << "/Times-Roman findfont" << endl
-	     << "12 scalefont" << endl
-	     << "setfont" << endl;
+	     << " >> setpagedevice" << std::endl
+	     << "/un {" << un << " mul} def" << std::endl
+	     << "/Times-Roman findfont" << std::endl
+	     << "12 scalefont" << std::endl
+	     << "setfont" << std::endl;
 }
 
 
@@ -27,10 +27,10 @@ PS::init (ostream& out, char const* mediaType, int orientation, double un)
  * sets length unit
  */
 
-ostream&
-PS::unit (ostream& out, double un)
+std::ostream&
+PS::unit (std::ostream& out, double un)
 {
-  return out << "/un {" << un << " mul} def" << endl;
+  return out << "/un {" << un << " mul} def" << std::endl;
 }
 
 
@@ -38,10 +38,10 @@ PS::unit (ostream& out, double un)
  * sets landscape output
  */
 
-ostream&
-PS::landscape (ostream& out)
+std::ostream&
+PS::landscape (std::ostream& out)
 {
-  return out << "90 rotate" << endl;
+  return out << "90 rotate" << std::endl;
 }
 
 
@@ -49,10 +49,10 @@ PS::landscape (ostream& out)
  * sets line width
  */
 
-ostream&
-PS::lineWidth (ostream& out, double width)
+std::ostream&
+PS::lineWidth (std::ostream& out, double width)
 {
-  return out << width << " setlinewidth" << endl;
+  return out << width << " setlinewidth" << std::endl;
 }
 
 
@@ -60,12 +60,12 @@ PS::lineWidth (ostream& out, double width)
  * sets font
  */
 
-ostream&
-PS::setfont (ostream& out, char const* font, int size)
+std::ostream&
+PS::setfont (std::ostream& out, char const* font, int size)
 {
-  return out << "/" << font << " findfont" << endl
-	     << size << " scalefont" << endl
-	     << "setfont" << endl;
+  return out << "/" << font << " findfont" << std::endl
+	     << size << " scalefont" << std::endl
+	     << "setfont" << std::endl;
 }
 
 
@@ -73,10 +73,10 @@ PS::setfont (ostream& out, char const* font, int size)
  * shows current page
  */
 
-ostream&
-PS::showpage (ostream& out)
+std::ostream&
+PS::showpage (std::ostream& out)
 {
-  return out << "showpage" << endl;
+  return out << "showpage" << std::endl;
 }
 
 
@@ -84,10 +84,10 @@ PS::showpage (ostream& out)
  * saves current state
  */
 
-ostream&
-PS::gsave (ostream& out)
+std::ostream&
+PS::gsave (std::ostream& out)
 {
-  return out << "gsave" << endl;
+  return out << "gsave" << std::endl;
 }
 
 
@@ -95,10 +95,10 @@ PS::gsave (ostream& out)
  * restores saved state
  */
 
-ostream&
-PS::grestore (ostream& out)
+std::ostream&
+PS::grestore (std::ostream& out)
 {
-  return out << "grestore" << endl;
+  return out << "grestore" << std::endl;
 }
 
 
@@ -106,12 +106,12 @@ PS::grestore (ostream& out)
  * draws text
  */
 
-ostream&
-PS::show (ostream& out, double x, double y, char const* text)
+std::ostream&
+PS::show (std::ostream& out, double x, double y, char const* text)
 {
-  return out << "newpath" << endl
-	     << x << " un " << y << " un moveto" << endl
-	     << "(" << text << ") show" << endl;
+  return out << "newpath" << std::endl
+	     << x << " un " << y << " un moveto" << std::endl
+	     << "(" << text << ") show" << std::endl;
 }
 
 
@@ -119,12 +119,12 @@ PS::show (ostream& out, double x, double y, char const* text)
  * draws text
  */
 
-ostream&
-PS::show (ostream& out, double x, double y, string const& text)
+std::ostream&
+PS::show (std::ostream& out, double x, double y, std::string const& text)
 {
-  return out << "newpath" << endl
-	     << x << " un " << y << " un moveto" << endl
-	     << "(" << text << ") show" << endl;
+  return out << "newpath" << std::endl
+	     << x << " un " << y << " un moveto" << std::endl
+	     << "(" << text << ") show" << std::endl;
 }
 
 
@@ -132,20 +132,20 @@ PS::show (ostream& out, double x, double y, string const& text)
  * draws some rectangles
  */
 
-ostream&
-PS::rect (ostream& out, double offx, double offy, double width,
+std::ostream&
+PS::rect (std::ostream& out, double offx, double offy, double width,
 	  points const& rects)
 {
   for (uint i = 0; i < rects.size(); i++)
     {
-      out << "newpath" << endl
+      out << "newpath" << std::endl
 	  << offx + rects[i].x - width/2 << " un "
-	  << offy + rects[i].y - width/2 << " un moveto" << endl
-	  << width << " un " << 0 << " un rlineto" << endl
-	  << 0 << " un " << width << " un rlineto" << endl
-	  << -width << " un " << 0 << " un rlineto" << endl
-	  << "closepath" << endl
-	  << "fill" << endl;
+	  << offy + rects[i].y - width/2 << " un moveto" << std::endl
+	  << width << " un " << 0 << " un rlineto" << std::endl
+	  << 0 << " un " << width << " un rlineto" << std::endl
+	  << -width << " un " << 0 << " un rlineto" << std::endl
+	  << "closepath" << std::endl
+	  << "fill" << std::endl;
     }
   return out;
 }
@@ -155,17 +155,17 @@ PS::rect (ostream& out, double offx, double offy, double width,
  * draws a curve
  */
 
-ostream&
-PS::curve (ostream& out, double offx, double offy, bool close, bool fill,
+std::ostream&
+PS::curve (std::ostream& out, double offx, double offy, bool close, bool fill,
 	   points const& path)
 {
-  out << "newpath" << endl;
+  out << "newpath" << std::endl;
   for (uint i = 0, s = path.size (); i < s; i++)
     {
       out << offx + path[i].x << " un " << offy + path[i].y << " un "
-	  << (i == 0 ? "moveto" : "lineto") << endl;
+	  << (i == 0 ? "moveto" : "lineto") << std::endl;
     }
-  if (close) out << "closepath" << endl;
-  out << (fill ? "fill" : "stroke") << endl;
+  if (close) out << "closepath" << std::endl;
+  out << (fill ? "fill" : "stroke") << std::endl;
   return out;
 }
