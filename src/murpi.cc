@@ -1,4 +1,6 @@
 #include <config.h>
+#include <cmath>
+#include <cstring>
 #include <iostream>
 #include <string>
 #include <vector>
