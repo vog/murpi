@@ -43,7 +43,7 @@ public:
 
   // sets font
   static ostream&
-  PS::setfont (ostream& out, char const* font, int size);
+  setfont (ostream& out, char const* font, int size);
 
   // shows current page
   static ostream&
@@ -59,11 +59,11 @@ public:
 
   // draws text
   static ostream&
-  PS::show (ostream& out, double x, double y, char const* text);
+  show (ostream& out, double x, double y, char const* text);
 
   // draws text
   static ostream&
-  PS::show (ostream& out, double x, double y, string const& text);
+  show (ostream& out, double x, double y, string const& text);
 
   // draws some rectangles
   static ostream&
